@@ -51,7 +51,8 @@ app.listen(8080, () => {
     console.log("Server is listening to port 8080");
 });
 app.get("/", (req, res) => {
-    res.send("hii");
+   const allListings = await Listing.find({});
+    res.render("listings/index.ejs", { allListings });
 });
 const store=MongoStore.create({
     mongoUrl:dbUrl,

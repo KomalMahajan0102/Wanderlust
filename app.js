@@ -50,9 +50,9 @@ async function main() {
 app.listen(8080, () => {
     console.log("Server is listening to port 8080");
 });
-// app.get("/", (req, res) => {
-//     res.send("hii");
-// });
+app.get("/", (req, res) => {
+    res.send("hii");
+});
 const store=MongoStore.create({
     mongoUrl:dbUrl,
     crypto:{

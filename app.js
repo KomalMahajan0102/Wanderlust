@@ -26,7 +26,7 @@ const listingsRouter=require("./routes/listing.js");
 const reviewsRouter=require("./routes/review.js");
 const usersRouter=require("./routes/user.js");
 
-
+const Listing = require("./models/listing.js");
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.engine("ejs", ejsMate);
@@ -50,7 +50,7 @@ async function main() {
 app.listen(8080, () => {
     console.log("Server is listening to port 8080");
 });
-app.get("/", (req, res) => {
+app.get("/", async(req, res) => {
    const allListings = await Listing.find({});
     res.render("listings/index.ejs", { allListings });
 });
